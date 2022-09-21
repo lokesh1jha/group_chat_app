@@ -1,0 +1,55 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.chattable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+table {
+    border-collapse: collapse;
+    width: 50%;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(odd){background-color: #f2f2f2}
+  
+  th {
+    background-color: #04AA6D;
+    color: white;
+  }
+
+  .sendmessagaenav {
+    position: fixed;
+    bottom: 0;
+    background-color: blue;
+    width: 100%;
+    height: 50px;
+    display: flex;
+  }
+  
+  .messageinput {
+    margin-left: 35%;
+    width: 450px;
+    height: 25px;
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+
+  .sendbtn {
+    width: 45px;
+    height: 25px;
+    margin-top: 12px;
+    cursor: pointer;
+  }

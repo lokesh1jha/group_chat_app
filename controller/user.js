@@ -71,3 +71,10 @@ exports.loginUser = (req, res, next) => {
 }
 
 
+exports.sendmessage = (req, res, next) => {
+    console.log("Sending Message")
+}
+
+exports.getmessage = (req, res, next) => {
+    console.log("Sending Message");
+}

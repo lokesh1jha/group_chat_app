@@ -5,6 +5,10 @@ const cors = require('cors');
 
 const sequelize = require('./util/database');
 const User = require('./models/user');
+const Message = require('./models/message')
+const Conversations = require('./models/conversation')
+const GroupMember = require('./models/groupmember')
+
 const userRoutes = require('./routes/user');
 
 const app = express();
@@ -18,6 +22,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/user', userRoutes);
+
+//Association
+User.hasMany(Message);
+Message.belongsTo(User);
+
+GroupMember.hasMany(User);
+Conversations.belongsTo(User);
+
+Message.belongsTo(GroupMember);
+GroupMember.hasMany(Message);
+
+Conversations.belongsTo(GroupMember);
+GroupMember.hasMany(Conversations);
 
 
 sequelize

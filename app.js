@@ -27,7 +27,7 @@ app.use('/user', userRoutes);
 User.hasMany(Message);
 Message.belongsTo(User);
 
-GroupMember.hasMany(User);
+User.hasMany(Conversations);
 Conversations.belongsTo(User);
 
 Message.belongsTo(GroupMember);

@@ -25,10 +25,9 @@ function registerUser(e) {
     axios.post(`${URLTOBACKEND}user/signup`, User)
         .then(res => {
             if(res.status === 201){
-                alert("Successfuly signed up")}
-            // }else if(res.status === 400){
-            //     alert(res.data.messsage);
-            // }
+                alert("Successfuly signed up")
+                window.location.href = "../login/login.html";
+        }
             else {
                 console.log("User Registration failed")
                 throw new Error(res.data.messsage);

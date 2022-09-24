@@ -2,13 +2,41 @@ const User = require('../models/user')
 const Message = require('../models/message')
 
 exports.sendMessage  = (req, res, next) => {
-    const {message, senderId, receiverId} = req.body;
-    Message.create({ message, senderId, receiverId })
-    .then(() => {
-        res.status(200).json({ message: "Message sent Successful" })
-    })
-    .catch(err => {
-        res.status(403).json({ sucess: false, error: err })
-        console.log("error " + err.message);
-    })
+    let groupid = req.params.id
+  console.log(groupid)
+  const { message } = req.body;
+  console.log(req.body)
+  if (message == undefined || message.length === 0) {
+    return res.status(400).json({ err: "Parameters Missing" });
+  } else {
+    Message.create({ message, userId: req.user.id,groupId:groupid})
+      .then((result) => {
+        res.status(201).json({ message: "Message Sent", success: true });
+      })
+      .catch((err) => {
+        res.status(500).json({ err: "Something went wrong" + err });
+      });
+  }
 }
+
+
+exports.getMessage  = (req, res, next) => {
+    let groupid = req.params.id
+  Message.findAll({where:{groupId:groupid},
+    include: [
+      {
+        model: User,
+        required: false,
+      },
+    ],
+    
+  })
+    .then((response) => {
+      res.status(200).json({ data: response, success: true });
+    })
+    .catch((err) => {
+      res.status(500).json({message:'Something Went Wrong',err})
+    }
+    );
+}
+

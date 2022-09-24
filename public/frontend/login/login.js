@@ -1,4 +1,4 @@
-const URLTOBACKEND = 'http://localhost:3000/';
+const URL = 'http://localhost:3000';
 
 document.getElementById('loginForm').addEventListener('submit', loginUser);
 
@@ -12,15 +12,18 @@ function loginUser(e) {
         email,
         password
     }
-    
-    axios.post(`${URLTOBACKEND}user/login`, user)
+
+    axios.post(`${URL}/user/login`, user)
         .then(res => {
-            if(res.status == 200){
-                console.log(user)
-                localStorage.setItem('token', res.data.token);
-                localStorage.setItem('userDetails', JSON.stringify(res.data))
+            if (res.status == 200) {
+                localStorage.setItem("user", JSON.stringify(response.data.user));
+                localStorage.setItem("token", response.data.token);
+                localStorage.setItem(
+                    "usergroup",
+                    JSON.stringify(response.data.usergroup)
+                );
                 window.location.href = "../chat/chat.html"; // change the page on successful login                
-            }else {
+            } else {
                 console.log("User Login failed");
                 throw new Error('Failed to login');
             }
@@ -28,5 +31,4 @@ function loginUser(e) {
         .catch(err => {
             document.body.innerHTML += `<div style="color:red;">${err} <div>`;
         })
-    
 }

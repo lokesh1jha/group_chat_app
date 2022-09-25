@@ -7,6 +7,15 @@ body {
     background: linear-gradient(white, #D3D8E8);
 }
 
+.logo {
+    display: flex;
+}
+
+.logo img {
+    height: 70px;
+    margin-top: 7px;
+    margin-left: 10px;
+}
 #header_wrapper {
     width: 100%;
     min-width: 980px;

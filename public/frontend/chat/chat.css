@@ -6,7 +6,30 @@ body {
 h1 {
     text-align: center;
 }
+.creategrpbtn {
+  margin-left: 55px;
+}
+.chatwindow {
+  display: grid;
+  height: 495px;
+  grid-template-columns: auto auto;
+  padding: 10px;
+}
 
+.groupdiv {
+  height: inherit;
+  /* width: 380px; */
+  background:rgb(224, 107, 107);
+  margin:10px;
+  padding: 20px;
+}
+
+.chatdiv {
+  height: 495px;
+  width: 925px;
+  background:rgb(253, 253, 248);
+  margin:10px
+}
 .chattable {
     display: flex;
     align-items: center;
@@ -34,13 +57,13 @@ table {
     position: fixed;
     bottom: 0;
     background-color: blue;
-    width: 100%;
+    width: 500px;
     height: 50px;
     display: flex;
   }
   
   .messageinput {
-    margin-left: 35%;
+    margin-left: 32px;
     width: 450px;
     height: 25px;
     margin-top: 10px;
@@ -51,5 +74,18 @@ table {
     width: 45px;
     height: 25px;
     margin-top: 12px;
+    margin-right: 32px;
+    cursor: pointer;
+  }
+
+  .siglegrp {
+    padding: 5px;
+  } 
+
+  button {
+    border: none;
+    color: #04AA6D;
+    background-color: white;
+    border-radius: 0.2rem;
     cursor: pointer;
   }

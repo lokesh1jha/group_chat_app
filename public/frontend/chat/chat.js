@@ -10,7 +10,7 @@ const URL = 'http://localhost:3000'
 
 
 function addMessagesToUI(id, message) {
-    const name = (id == userId)?'You':'Friend';
+    const name = (id == userId) ? 'You' : 'Friend';
     chatlog.innerHTML += `
     <tr>
         <td> ${name}: ${message} </td>
@@ -18,15 +18,29 @@ function addMessagesToUI(id, message) {
 }
 
 window.addEventListener('load', () => {
-    // userId = parseInt(localStorage.getItem(userDetails).id);
+    let token = localStorage.getItem("token");
+    user = JSON.parse(localStorage.getItem("user"));
 
-    axios.get(`${URL}/user/getMessage?userid=${userId}`)
-    .then((message)=> {
-        console.log(message);
-        // messages.data.message.forEach(element => {
-        //     addMessagesToUI(userId, element)
-        // });
+    // console.log(user);
+    axios.get(`${URL}/user/getMessage`, {
+        headers: { Authorization: token },
     })
+        .then((response) => {
+            console.log(response.data.data);
+            localStorage.setItem("usergroup", JSON.stringify(response.data.data));
+            let groupdiv = document.getElementById("mygroups");
+            let content = "";
+            let msgcontent = "";
+            for (let i = 0; i < response.data.data.length; i++) {
+                let grpname = response.data.data[i].group.name;
+                let grpid = response.data.data[i].group.id;
+                content += `<div class="grpdetail"><span class="grpele">${grpname}</span><button type="submit" onclick="jumpintogroup(${grpid})" class="grpele btn" id="jumpbtn">Jump In</button><div><label>Enter your message:   
+        </label><input type="text" id=${grpid}><button onclick="sendmsg(${grpid})" id="sendbtn">Send</button></div></div>`;
+            }
+            groupdiv.innerHTML = content;
+        })
+        .catch((err) => console.log(err));
+
 });
 
 
@@ -34,7 +48,7 @@ sendbtn.addEventListener('clicked', sendMessage);
 
 function sendMessage() {
     const message = message.value;
-    if(message === ''){
+    if (message === '') {
         alert('Please type something in Message to send.');
     }
     message.val = '';
@@ -45,13 +59,13 @@ function sendMessage() {
         groupId,
     }
     axios.post(`${URL}/user/sendmessage`, sendMsg)
-    .then( (response) => {
-    console.log(response);
-    if(response.status === 200){
-        addMessagesToUI(userID, message);
-    }
-    }).catch((err) => {
-        console.log("Error in sending Message" + err);
-    })
+        .then((response) => {
+            console.log(response);
+            if (response.status === 200) {
+                addMessagesToUI(userID, message);
+            }
+        }).catch((err) => {
+            console.log("Error in sending Message" + err);
+        })
 
 }

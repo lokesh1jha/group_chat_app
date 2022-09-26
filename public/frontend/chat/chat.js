@@ -3,24 +3,6 @@ let ACTIVEUSERID = 0;
 let ACTIVEGROUPID = 0;
 
 
-const adminfeatureform = `
-<div class="adduser">
-    <input type="text" id="addusername" placeholder="User's Name">
-    <button id="adduserbtn">Add User</button>
-</div>
-<div class="removeuser">
-    <input type="text" id="removeusername" placeholder="User's Name">
-    <button id="removeuserbtn">Remove User</button>
-</div>
-<div class="makeadmin">
-    <input type="text" id="addadminname" placeholder="User's Name">
-    <button id="addadminbtn">Add as ADMIN</button>
-</div>
-<div class="removeadmin">
-    <input type="text" id="removedminname" placeholder="User's Name">
-    <button id="removeadminbtn">Remove as ADMIN</button>
-</div>`;
-
 // ------------------------------------------------------------------
 // -------------------- First Load Page -----------------------------
 // ------------------------------------------------------------------
@@ -45,8 +27,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 let grpid = response.data.data[i].group.id;
                 content += `<div class="grpdetail" value="${grpid}">
                 ${grpname} &nbsp;&nbsp; <button type="submit" onclick="expandgroup(${grpid})" id="jumpbtn">Messages</button>
-                &nbsp;&nbsp;<button id="moreforadmin"> ... </button> 
-                </div><div class="adminfeature hidefornonadmin"></div>`
+                </div>`
             }
             groupdiv.innerHTML = content;
         })
@@ -176,8 +157,8 @@ function getmembers(groupid) {
             } else {
               if (usergroup.isadmin == true) {
                 content += `<div class="userdiv"><span class="userele" id="username">${name}</span>
-                <button class="userele" onclick="makeadmin(${groupid},${id})">make admin</button>
-                <button class="userele" onclick= "removeuser(${groupid},${id})">remove</button></div>`;
+                <button class="userele" onclick="makeadmin(${groupid},${id})">Make_Admin</button>
+                <button class="userele" onclick= "removeuser(${groupid},${id})">Remove_User</button></div>`;
                 onemorecontent = `<label class="addduser">Add User :</label><input type = "text" id="name" class="addduser">
                                   <button onclick="adduser(${groupid})">Add</button>`;
               }
@@ -279,7 +260,7 @@ function expandgroup(grpid) {
 }
 
 function retrivemsg(groupid) {
-    axios.get(`${URL}/user/getmessages/${groupid}`).then((response) => {
+    axios.get(`${URL}/user/getmessage/${groupid}`).then((response) => {
         let chatlog = document.getElementById("chatlog");
         let content = "";
         console.log(response)
@@ -322,7 +303,7 @@ function sendMessage() {
     if (message === '') {
         alert('Please type something in Message to send.');
     }
-    message.val = '';
+    newmessage.value = '';
     let groupid = ACTIVEGROUPID;
     
     let obj = {
@@ -337,7 +318,6 @@ function sendMessage() {
           console.log(response);
     
           if (response.status == 201) {
-            alert("Message Sent");
             retrivemsg(groupid);
           }
         })

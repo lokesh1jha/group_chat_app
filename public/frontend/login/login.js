@@ -15,14 +15,12 @@ function loginUser(e) {
 
     axios.post(`${URL}/user/login`, user)
         .then(res => {
-            if (res.status == 200) {
-                localStorage.setItem("user", JSON.stringify(response.data.user));
-                localStorage.setItem("token", response.data.token);
-                localStorage.setItem(
-                    "usergroup",
-                    JSON.stringify(response.data.usergroup)
-                );
-                window.location.href = "../chat/chat.html"; // change the page on successful login                
+            if (res.status === 200) {
+                localStorage.setItem("user", JSON.stringify(res.data.user));
+                localStorage.setItem("token", res.data.token);
+                localStorage.setItem("usergroup", JSON.stringify(res.data.usergroup));
+                window.location.href = "../chat/chat.html"; // change the page on successful login 
+                return false;               
             } else {
                 console.log("User Login failed");
                 throw new Error('Failed to login');

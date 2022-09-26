@@ -78,8 +78,10 @@ table {
     cursor: pointer;
   }
 
-  .siglegrp {
+  .grpdetail {
     padding: 5px;
+    background-color: darkgrey;
+    border-radius: 5px;
   } 
 
   button {
@@ -88,4 +90,12 @@ table {
     background-color: white;
     border-radius: 0.2rem;
     cursor: pointer;
+  }
+
+  .adminfeature{
+    margin: 5px;  
+  }
+
+  .hidefornonadmin {
+    display: none;
   }

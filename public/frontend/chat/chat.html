@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,42 +8,50 @@
     <link rel="stylesheet" href="chat.css">
     <title>Express</title>
 </head>
+
 <body>
-    <h1>Chat App</h1>
+    <h1>Express</h1>
     <div class="chatwindow">
         <div class="groupdiv">
             <div class="creategrpbtn">
                 <button id="createnewgroup">Create New Group</button>
             </div>
             <br>
-            <form action="" method="post" class="newgroupform">
-                <input type="text" placeholder="Group Name">
-                <button type="button" id="newgroupbtn">Create</button>
-            </form>
+            <div id="newgroupform">
+                <!-- Form to be injected -->
+            </div>
             <br>
             <br>
-            
+
             <div id="groupslist">
-                <div class="siglegrp">Goup 1  <button id="groupid"> Messages </button> </div>
-                <div class="siglegrp">Goup 1  <button id="groupid"> Messages </button> </div>
-                <div class="siglegrp">Goup 1  <button id="groupid"> Messages </button> </div>
-                <div class="siglegrp">Goup 1  <button id="groupid"> Messages </button> </div>
-                
+                <!-- from backend -->
             </div>
         </div>
         <div class="chatdiv">
-            <div class="chattable">
-                <table id="chatlog">
-                </table>
-                <div class="sendmessagaenav">
-                    <input id="newmessage" class="messageinput" type="text">
-                    <button id="sendmsg" class="sendbtn">Send</button>
-                </div> 
-            </div>
-        </div>    
+            <h4 id="memberheader">Group Members</h2>
+                <div id="groupmembers">
+
+                </div>
+                <div id="groupmembers2">
+
+                </div>
+                <div id="addmems">
+
+                </div>
+                <h4 id="chatheader1">Group Chats</h4>
+                <div class="chattable">
+                    <table id="chatlog">
+                    </table>
+                    <div class="sendmessagaenav">
+                        <input id="newmessage" class="messageinput" type="text">
+                        <button id="sendmsg" class="sendbtn">Send</button>
+                    </div>
+                </div>
+        </div>
     </div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="chat.js"></script>
 </body>
+
 </html>

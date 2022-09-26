@@ -1,19 +1,17 @@
+const { type } = require('os');
 const Sequelize = require('sequelize');
 const sequelize = require('../util/database')
 
 
 
-const Conversations = sequelize.define("conversations", {
+const Groups = sequelize.define("groups", {
     id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
     },
-    isadmin: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false
-    }
-});
+    name: {type: Sequelize.STRING}
+    });
 
-module.exports = Conversations;
+module.exports = Groups;

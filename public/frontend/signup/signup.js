@@ -13,7 +13,7 @@ function registerUser(e) {
 
     if (name === '' || email === '' || phone === '' || password === '') {
         alert('Please fill all the fields');
-        return;   
+        return;
     }
     const User = {
         name,
@@ -24,10 +24,10 @@ function registerUser(e) {
     console.log(User);
     axios.post(`${URLTOBACKEND}user/signup`, User)
         .then(res => {
-            if(res.status === 201){
+            if (res.status === 200) {
                 alert("Successfuly signed up")
                 window.location.href = "../login/login.html";
-        }
+            }
             else {
                 console.log("User Registration failed")
                 throw new Error(res.data.messsage);
@@ -37,7 +37,7 @@ function registerUser(e) {
             alert("Your Email Id is already registerd.")
             console.log("error " + err);
         })
-    
+
     document.getElementById('signupForm').reset();
 
 }

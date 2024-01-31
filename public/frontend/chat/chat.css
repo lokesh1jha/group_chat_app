@@ -1,0 +1,101 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+h1 {
+    text-align: center;
+}
+.creategrpbtn {
+  margin-left: 55px;
+}
+.chatwindow {
+  display: grid;
+  height: 495px;
+  grid-template-columns: auto auto;
+  padding: 10px;
+}
+
+.groupdiv {
+  height: inherit;
+  /* width: 380px; */
+  background:rgb(224, 107, 107);
+  margin:10px;
+  padding: 20px;
+}
+
+.chatdiv {
+  height: 495px;
+  width: 925px;
+  background:rgb(253, 253, 248);
+  margin:10px
+}
+.chattable {
+    display: flex;
+    /* align-items: center;
+    justify-content: center; */
+}
+
+table {
+    border-collapse: collapse;
+    width: 50%;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(odd){background-color: #f2f2f2}
+  
+  th {
+    background-color: #04AA6D;
+    color: white;
+  }
+
+  .sendmessagaenav {
+    position: fixed;
+    bottom: 0;
+    background-color: blue;
+    width: 500px;
+    height: 50px;
+    display: flex;
+  }
+  
+  .messageinput {
+    margin-left: 32px;
+    width: 450px;
+    height: 25px;
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+
+  .sendbtn {
+    width: 45px;
+    height: 25px;
+    margin-top: 12px;
+    margin-right: 32px;
+    cursor: pointer;
+  }
+
+  .grpdetail {
+    padding: 5px;
+    background-color: darkgrey;
+    border-radius: 5px;
+  } 
+
+  button {
+    border: none;
+    color: #04AA6D;
+    background-color: white;
+    border-radius: 0.2rem;
+    cursor: pointer;
+  }
+
+  .adminfeature{
+    margin: 5px;  
+  }
+
+  .hidefornonadmin {
+    display: none;
+  }
